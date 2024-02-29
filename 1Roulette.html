@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Roulette</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+        .header-brand {
+        
+        height: 35px;
+        cursor: pointer;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 36px;
+            margin-top: 50px;
+        }
+
+        p{
+            color: aliceblue;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .profile-pin-dismiss{
+    position: absolute;
+    right: 30px;
+    top: 100px;
+}
+
+.profile-pin-dismiss a{
+    display: block;
+}
+
+        #movieContainer {
+            margin-top: 50px;
+        }
+
+        #title {
+            font-size: 28px;
+            font-style: italic;
+            color: #e50914;
+        }
+
+        #poster {
+            margin: 20px auto;
+            max-width: 300px;
+            border-radius: 4px;
+        }
+
+        #overview {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        #releaseDate {
+            font-size: 18px;
+            color: #e50914;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff401e;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover{
+            background-color: #e50914;
+        }
+
+        .spin-animation {
+            animation-name: spin;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="Homepage.html">
+            <img class="header-brand" src="LOGO1.png" alt="" >
+        </a>
+    </div>
+    <div class="profile-pin-dismiss">
+        <a href="Homepage.html">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon-close" data-name="Close"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.29297 3.70706L10.5859 12L2.29297 20.2928L3.70718 21.7071L12.0001 13.4142L20.293 21.7071L21.7072 20.2928L13.4143 12L21.7072 3.70706L20.293 2.29285L12.0001 10.5857L3.70718 2.29285L2.29297 3.70706Z" fill="currentColor"></path></svg>
+        </a>
+    </div>
+    <h1>Welcome to Movie Roulette!</h1>
+    <p>Let's see which movie fate selects for you...</p>
+    <div id="movieContainer">
+        <h2 id="title"></h2>
+        <img id="poster" src="" alt="Movie Poster">
+        <p id="overview"></p>
+        <p id="releaseDate"></p>
+    </div>
+
+    <button id="spinButton">Spin Again</button>
+
+    <script>
+        var API_KEY = '0322067ce00371e116830c3c28b086a0';
+
+        function getRandomMovie() {
+            var page = Math.floor(Math.random() * 1000) + 1;
+            var url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&page=' + page;
+            var firstSpin = true;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    
+                    var movies = data.results;
+                    var randomMovie = movies[Math.floor(Math.random() * movies.length)];
+                    var title = randomMovie.title;
+                    var overview = randomMovie.overview;
+                    var releaseDate = randomMovie.release_date;
+                    var posterPath = 'https://image.tmdb.org/t/p/w500' + randomMovie.poster_path;
+
+                    document.getElementById('title').innerText = title;
+                    document.getElementById('overview').innerText = overview;
+                    document.getElementById('releaseDate').innerText = 'Release Date: ' + releaseDate;
+                    document.getElementById('poster').src = posterPath;
+
+                    // Apply spin animation to the movie poster
+                    document.getElementById('poster').classList.add('spin-animation');
+                    setTimeout(function() {
+                        document.getElementById('poster').classList.remove('spin-animation');
+                    }, 2000);
+                    if (firstSpin) {
+                        document.getElementById('spinButton').textContent = 'Spin Again';
+                        firstSpin = false;
+                    }
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+        }
+
+        document.getElementById('spinButton').addEventListener('click', getRandomMovie);
+    </script>
+</body>
+</html>

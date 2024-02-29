@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Search</title>
+  <link rel="stylesheet" href="search1.css">
+</head>
+<body>
+ 
+        <div class="header">
+            <a href="Homepage.html">
+                <img class="header-brand" src="LOGO1.png" alt="" >
+            </a>
+    
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter a movie name ">
+            <button onclick="searchMovies()">Search</button>
+        </div>
+    </div>
+   
+
+  <div id="searchResults" class="search-results"></div>
+
+  <script>
+    function searchMovies() {
+      const apiKey = '0322067ce00371e116830c3c28b086a0';
+      const query = document.getElementById('searchInput').value.trim();
+      const searchEndpoint = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+
+      fetch(searchEndpoint)
+        .then(response => response.json())
+        .then(data => {
+          const movies = data.results;
+          displaySearchResults(movies);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    function displaySearchResults(movies) {
+      const searchResultsDiv = document.getElementById('searchResults');
+      searchResultsDiv.innerHTML = '';
+
+      movies.forEach(movie => {
+        const movieTitle = movie.title;
+        const moviePoster = movie.poster_path;
+        const movieElement = document.createElement('div');
+        movieElement.innerHTML = `
+        <h2 class="movie-title">${movieTitle}</h2>
+        <p class="banner__info">Release Date - ${movie.release_date}</p>
+          <img src="https://image.tmdb.org/t/p/w500${moviePoster}" alt="${movieTitle} Poster">
+        `;
+        searchResultsDiv.appendChild(movieElement);
+      });
+    }
+  </script>
+</body>
+</html>

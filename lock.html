@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE LOCK</title>
+    <link rel="stylesheet" href="lock.css">
+</head>
+<body>
+    <div class="profile-gate-container">
+        <div class="centered-div profile-pin-prompt">
+            <div class="profile-pin-dismiss">
+                <a href="profile.html">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-icon-close" data-name="Close"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.29297 3.70706L10.5859 12L2.29297 20.2928L3.70718 21.7071L12.0001 13.4142L20.293 21.7071L21.7072 20.2928L13.4143 12L21.7072 3.70706L20.293 2.29285L12.0001 10.5857L3.70718 2.29285L2.29297 3.70706Z" fill="currentColor"></path></svg>
+                </a>
+            </div>
+
+            <div class="profile-pin-prompt-status">
+                    Profile lock is currently on
+            </div>
+            <h1 class="profile-pin-prompt-label">Enter your Pin to access this Profile.</h1>
+            <div class="profile-pin-prompt-pad-wrapper">
+                <div class="pin-input-container">
+                    <input type="password" maxlength="1" class="pin-number-input" tabindex="0" data-uia="pin-number-0" aria-label="PIN Entry Input 1." value="">
+                    <input type="password" maxlength="1" class="pin-number-input" tabindex="0" data-uia="pin-number-0" aria-label="PIN Entry Input 1." value="">
+                    <input type="password" maxlength="1" class="pin-number-input" tabindex="0" data-uia="pin-number-0" aria-label="PIN Entry Input 1." value="">
+                    <input type="password" maxlength="1" class="pin-number-input" tabindex="0" data-uia="pin-number-0" aria-label="PIN Entry Input 1." value="">
+                <p class="pin-input-error"> Your PIN must be 4 numbers.
+
+                </p>
+                </div>
+                <div class="pin-input-container">
+                    <table class="sm-w-full" width="560" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr>
+                          <td class="reelgood-btn" style="
+                                mso-padding-alt: 20px 0;
+                                border-radius: 9999px;
+                                text-align: center;"
+                              bgcolor = "#ff0000" align="center">
+                            <a href="Homepage.html" class="all-font-helvetica" style="
+                                  display: block;
+                                  font-weight: 1000;
+                                  line-height: 100%;
+                                  padding-top: 20px;
+                                  padding-bottom: 20px;
+                                  color: #ffffff;
+                                  font-size: 30px;
+                                  text-decoration: none;
+                                  cursor: pointer;
+                                ">Unlock</a>
+                    
+                    <!-- <table class="sm-w-full" width="560" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr>
+                          <td class="reelgood-btn" style="
+                                mso-padding-alt: 20px 0;
+                                border-radius: 9999px;
+                                text-align: center;
+                              " bgcolor="#ff0000" align="center">
+                            <a class="all-font-helvetica" style="
+                                  display: block;
+                                  font-weight: 1000;
+                                  line-height: 100%;
+                                  padding-top: 20px;
+                                  padding-bottom: 20px;
+                                  color: #ffffff;
+                                  font-size: 30px;
+                                  text-decoration: none;
+                                "> <button onclick="unlockProfile()">Unlock</button> </a>
+                          </td>
+                        </tr>
+                      </table> -->
+                    </div>
+                    <!-- <button onclick="unlockProfile()">Unlock</button> -->
+                </div>
+
+                <div class="profile-pin-prompt-forgot">
+                    <a tabindex="0" class="nf-icon-button nf-flat-button nf-flat-button-type-borderless nf-flat-button-uppercase no-icon" role="link" data-uia="">
+                        <span class="nf-flat-button-text">Forgot PIN?</span></a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="profile.js"></script>
+    <script src="lock.js"></script>
+</body>
+</html>

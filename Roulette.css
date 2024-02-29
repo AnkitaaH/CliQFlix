@@ -1,0 +1,124 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 500px auto;
+  background-color: #2b2b2b;
+  color: white;
+  box-sizing: border-box;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#movie-list {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.movie-box {
+  margin: 10px;
+  height: 300px;
+  width: 200px;
+  background-color: #1f1f1f;
+  border-radius: 5px;
+  transition-duration: 0.5s;
+  justify-items: center;
+  align-content: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: 19px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.movie-box::before {
+  content: "";
+  left: 20%;
+  top: -10px;
+  height: 40px;
+  width: 20px;
+  border-radius: 5px;
+  background-color: rgb(63, 63, 63);
+  position: absolute;
+}
+
+.watched::after {
+  content: "X";
+  font-size: 250px;
+  color: black;
+  margin-top: -10px;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  border-radius: 5px;
+  background-color: rgb(63, 63, 63);
+  position: absolute;
+}
+
+.movie-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 7px 7px 14px #cf2f2f,
+    -7px -7px 14px #ff4545;
+}
+
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+img {
+  height: 250px;
+  position: relative;
+}
+
+#resultSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#result-box {
+  background-color: #1b1c1e;
+  padding: 4px;
+  text-align: center;
+  display: relative;
+  height: 300px;
+  width: 200px;
+}
+
+#randomise {
+  margin-top: 50px;
+  border-radius: 4px;
+  padding: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+#randomise:hover {
+  border-radius: 6px;
+}
+
+#stars {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+section {
+  z-index: 2;
+}
